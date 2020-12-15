@@ -37,6 +37,8 @@ partial class CameraRender
         {
             drawingSettings.SetShaderPassName(i, legacyShaderTagIds[i]);
         }
+        var filteringSetting = FilteringSettings.defaultValue;
+        context.DrawRenderers(cullingResults, ref drawingSettings, ref filteringSetting);
     }
     partial void PrepareForSceneWindow()
     {
