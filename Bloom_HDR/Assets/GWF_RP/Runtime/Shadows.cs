@@ -6,6 +6,10 @@ using UnityEngine.Rendering;
 public class Shadows
 {
 	const string bufferName = "Shadows";
+
+	const int maxShadowedDirLightCount = 4, maxShadowedOtherLightCount = 16;
+	const int maxCascades = 4;
+
 	private ScriptableRenderContext context;
     private CullingResults cullingResults;
     private ShadowSettings settings;
@@ -16,12 +20,25 @@ public class Shadows
 		name = bufferName
 	};
 
+	static string[] shadowMaskKeywords = {
+		"_SHADOW_MASK_ALWAYS",
+		"_SHADOW_MASK_DISTANCE"
+	};
+
 	static int	dirShadowAtlasId = Shader.PropertyToID("_DirectionalShadowAtlas"),	
 		dirShadowMatricesId = Shader.PropertyToID("_DirectionalShadowMatrices"),		otherShadowAtlasId = Shader.PropertyToID("_OtherShadowAtlas"),	
 		otherShadowMatricesId = Shader.PropertyToID("_OtherShadowMatrices"),			otherShadowTilesId = Shader.PropertyToID("_OtherShadowTiles"),	
 		cascadeCountId = Shader.PropertyToID("_CascadeCount"),							shadowPancakingId = Shader.PropertyToID("_ShadowPancaking"),
 		cascadeCullingSpheresId = Shader.PropertyToID("_CascadeCullingSpheres"),		cascadeDataId = Shader.PropertyToID("_CascadeData"),
 		shadowAtlasSizeId = Shader.PropertyToID("_ShadowAtlasSize"),					shadowDistanceFadeId = Shader.PropertyToID("_ShadowDistanceFade");
+
+	static Vector4[]
+		cascadeCullingSpheres = new Vector4[maxCascades],
+		cascadeData = new Vector4[maxCascades],
+		otherShadowTiles = new Vector4[maxShadowedOtherLightCount];
+
+	Vector4 atlasSizes;
+
 	public void Setup(ScriptableRenderContext context , CullingResults cullingResults,ShadowSettings settings)
     {
 		this.context = context;
@@ -31,19 +48,83 @@ public class Shadows
 		useShadowMask = false;
 	}
 
-	public void Cleanup()
+	public void Render()
     {
-		buffer.ReleaseTemporaryRT(dirShadowAtlasId);
-        if (shadowedOtherLightCount > 0)
-        {			
-			buffer.ReleaseTemporaryRT(otherShadowAtlasId);
+        if (shadowedDirLightCount > 0)
+        {
+            //render dicrectional shadow;
         }
-		ExecutrBuffer();
+        else
+        {
+			buffer.GetTemporaryRT(dirShadowAtlasId, 1, 1, 32, FilterMode.Bilinear, RenderTextureFormat.Shadowmap);
+        }
+        if (shadowedOtherLightCount > 0)
+        {
+            //render other shadow;
+        }
+        else
+        {
+			buffer.SetGlobalTexture(otherShadowAtlasId, dirShadowAtlasId);
+        }
+
+		buffer.BeginSample(bufferName);
+		SetKeywords(shadowMaskKeywords, useShadowMask ? QualitySettings.shadowmaskMode == ShadowmaskMode.Shadowmask ? 0 : 1 : -1);
+		buffer.SetGlobalInt(cascadeCountId, shadowedDirLightCount > 0 ? settings.directional.cascadeCount : 0);
+
+		float f = 1f - settings.directional.cascadeFade;
+		buffer.SetGlobalVector(shadowDistanceFadeId, new Vector4(1f / settings.maxDistance, 1f / settings.distanceFade, 1f / (1f - f * f)));
+
+		buffer.SetGlobalVector(shadowAtlasSizeId, atlasSizes);
+		buffer.EndSample(bufferName);
+		ExecuteBuffer();
+
+    }
+
+	void RenderDirectionalShadows()
+    {
+		int atlasSize = (int)settings.directional.atlasSize;
+		atlasSizes.x = atlasSize;
+		atlasSizes.y = 1 / atlasSize;
+		buffer.GetTemporaryRT(dirShadowAtlasId, atlasSize, atlasSize, 32, FilterMode.Bilinear, RenderTextureFormat.Shadowmap);
+		buffer.SetRenderTarget(dirShadowAtlasId, RenderBufferLoadAction.DontCare, RenderBufferStoreAction.Store);
+		buffer.ClearRenderTarget(true, false, Color.clear);
+		buffer.SetGlobalFloat(shadowPancakingId, 1f);
+		buffer.BeginSample(bufferName);
+		ExecuteBuffer();
+
+		int tiles = shadowedDirLightCount * settings.directional.cascadeCount;
+		//从左到右，是否小于等于1选1，是否大于1小于等于4，
+		int split = tiles <= 1 ? 1 : tiles < 4 ? 2 : 4;
+		int tileSize = atlasSize / split;
+
+		for(int i = 0; i < shadowedDirLightCount; i++)
+        {
+			RenderDirectionalShadows(i, split, tileSize);
+        }
+
+    }
+	void RenderDirectionalShadows(int index, int split, int tileSize)
+	{
+	}
+	public void Cleanup()
+	{
+		buffer.ReleaseTemporaryRT(dirShadowAtlasId);
+		if (shadowedOtherLightCount > 0)
+		{
+			buffer.ReleaseTemporaryRT(otherShadowAtlasId);
+		}
+		ExecuteBuffer();
 
 	}
 
 	void SetOtherTileDate(int index,Vector2 offset,float scale,float bias)
     {
+		float border = atlasSizes.w * 0.5f;
+		Vector4 data;
+		data.x = offset.x * scale + border;
+		data.y = offset.y * scale + border;
+		data.z = scale - border - border;
+		data.w = bias;
 
     }
 
@@ -93,7 +174,7 @@ public class Shadows
         }
     }
 
-	void ExecutrBuffer()
+	void ExecuteBuffer()
     {
 		context.ExecuteCommandBuffer(buffer);
 		buffer.Clear();
