@@ -17,6 +17,15 @@ public partial class CameraRender
     };
     CullingResults cullingResults;
     bool useHDR;
+
+    public void Render(ScriptableRenderContext context, Camera camera)
+    {
+        this.context = context;
+        this.camera = camera;
+        Setup();
+        context.DrawSkybox(camera);
+        context.Submit();
+    }
     public void Render(ScriptableRenderContext context,Camera camera,bool allowHDR,bool useDynamicBatch,bool useGPUInstancing,bool useLightPerObject)
     {
         this.context = context;

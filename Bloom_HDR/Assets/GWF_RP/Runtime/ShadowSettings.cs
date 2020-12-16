@@ -36,6 +36,9 @@ public class ShadowSettings
         public int cascadeCount;
         [Range(0,1)]
         public float cascadeRatio1, cascadeRatio2, cascadeRatio3;
+
+        public Vector3 CascadeRatios => new Vector3(cascadeRatio1, cascadeRatio2, cascadeRatio3);
+
         [Range(0.001f,1f)]
         public float cascadeFade;
         public CascadeBlendMode cascadeBlend;
