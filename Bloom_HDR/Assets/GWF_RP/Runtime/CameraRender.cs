@@ -32,11 +32,19 @@ public partial class CameraRender
     {
         SortingSettings sortingSettings = new SortingSettings(camera) { criteria = SortingCriteria.CommonOpaque};
         DrawingSettings drawingSettings = new DrawingSettings(unlitShaderTagId,sortingSettings);
-        FilteringSettings filteringSettings = new FilteringSettings(RenderQueueRange.all);
+        FilteringSettings filteringSettings = new FilteringSettings(RenderQueueRange.opaque);
 
         context.DrawRenderers(cullingResults, ref drawingSettings, ref filteringSettings);
 
         context.DrawSkybox(camera);
+
+        sortingSettings.criteria = SortingCriteria.CommonTransparent;
+        drawingSettings.sortingSettings = sortingSettings;
+        filteringSettings.renderQueueRange = RenderQueueRange.transparent;
+
+        context.DrawRenderers(
+            cullingResults, ref drawingSettings, ref filteringSettings
+        );
     }
 
     void Setup()
