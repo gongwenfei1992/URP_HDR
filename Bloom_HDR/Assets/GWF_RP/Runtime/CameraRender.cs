@@ -6,9 +6,6 @@ using UnityEngine.Rendering;
 public partial class CameraRender
 {
     const string bufferName = "Render Camera";
-    static ShaderTagId
-        unlitShaderTagId = new ShaderTagId("SRPDefaultUnlit"),
-        litShaderTagId = new ShaderTagId("CustomLit");
     Camera camera;
     ScriptableRenderContext context;
     CommandBuffer buffer = new CommandBuffer
@@ -16,12 +13,16 @@ public partial class CameraRender
         name = bufferName
     };
     CullingResults cullingResults;
-    bool useHDR;
-
+    static ShaderTagId unlitShaderTagId = new ShaderTagId("SRPDefaultUnlit");
     public void Render(ScriptableRenderContext context, Camera camera)
     {
         this.context = context;
         this.camera = camera;
+        if (!Cull())
+        {
+            return;
+        }
+
         Setup();
         DrawVisibleGeometry();
         Submit();
@@ -29,6 +30,12 @@ public partial class CameraRender
 
     void DrawVisibleGeometry()
     {
+        SortingSettings sortingSettings = new SortingSettings(camera) { criteria = SortingCriteria.CommonOpaque};
+        DrawingSettings drawingSettings = new DrawingSettings(unlitShaderTagId,sortingSettings);
+        FilteringSettings filteringSettings = new FilteringSettings(RenderQueueRange.all);
+
+        context.DrawRenderers(cullingResults, ref drawingSettings, ref filteringSettings);
+
         context.DrawSkybox(camera);
     }
 
@@ -39,11 +46,6 @@ public partial class CameraRender
         buffer.BeginSample(bufferName);       
         ExecuteBuffer();        
         CameraClearFlags flags = camera.clearFlags;
-    }
-
-    void Cleanup()
-    {
-       
     }
 
     void Submit()
@@ -57,6 +59,17 @@ public partial class CameraRender
     {
         context.ExecuteCommandBuffer(buffer);
         buffer.Clear();
+    }
+
+    bool Cull()
+    {
+        if(camera.TryGetCullingParameters(out ScriptableCullingParameters p))
+        {
+            // cull 会在editor scene 地面网格画出来
+            cullingResults = context.Cull(ref p);
+            return true;
+        }
+        return false;
     }
   
 }
