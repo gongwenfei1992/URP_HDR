@@ -14,20 +14,12 @@ public partial class CameraRender
     };
     CullingResults cullingResults;
     static ShaderTagId unlitShaderTagId = new ShaderTagId("SRPDefaultUnlit");
-    static ShaderTagId[] legacyShaderTagIds =
-    {
-        new ShaderTagId("Always"),
-        new ShaderTagId("ForwardBase"),
-        new ShaderTagId("PrepassBase"),
-        new ShaderTagId("Vertex"),
-        new ShaderTagId("VertexLMRGBM"),
-        new ShaderTagId("VertexLM")
-    };
-    static Material errorMaterial;
+ 
     public void Render(ScriptableRenderContext context, Camera camera)
     {
         this.context = context;
         this.camera = camera;
+        PrepareForSceneWindow();
         if (!Cull())
         {
             return;
@@ -36,6 +28,7 @@ public partial class CameraRender
         Setup();
         DrawVisibleGeometry();
         DrawUnsupportedShader();
+        DrawGizmos(); 
         Submit();
     }
 
@@ -58,22 +51,6 @@ public partial class CameraRender
         );
     }
 
-    void DrawUnsupportedShader()
-    {
-        if(errorMaterial == null)
-        {
-            errorMaterial = new Material(Shader.Find("Hidden/InternalErrorShader"));
-        }
-        DrawingSettings drawingSettings = new DrawingSettings(legacyShaderTagIds[0], new SortingSettings(camera)) {
-            overrideMaterial = errorMaterial
-        };
-        for (int i = 1; i < legacyShaderTagIds.Length; i++)
-        {
-            drawingSettings.SetShaderPassName(i, legacyShaderTagIds[i]);
-        }
-        FilteringSettings filteringSettings = FilteringSettings.defaultValue;
-        context.DrawRenderers(cullingResults, ref drawingSettings, ref filteringSettings);
-    }
 
     void Setup()
     {
