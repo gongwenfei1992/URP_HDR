@@ -19,22 +19,25 @@ public partial class CameraRender
 
     Lighting lighting = new Lighting();
     
-    public void Render(ScriptableRenderContext context, Camera camera,bool useDynamicBatching, bool useGPUInstancing)
+    public void Render(ScriptableRenderContext context, Camera camera,bool useDynamicBatching, bool useGPUInstancing,ShadowSettings shadowSettings)
     {
         this.context = context;
         this.camera = camera;
         PrepareBuffer();
         PrepareForSceneWindow();
-        if (!Cull())
+        if (!Cull(shadowSettings.maxDistance))
         {
             return;
         }
-
+        buffer.BeginSample(SampleName);
+        ExecuteBuffer();
+        lighting.Setup(context,cullingResults,shadowSettings);
+        buffer.EndSample(SampleName);
         Setup();
-        lighting.Setup(context,cullingResults);
         DrawVisibleGeometry(useDynamicBatching, useGPUInstancing);
         DrawUnsupportedShader();
-        DrawGizmos(); 
+        DrawGizmos();
+        lighting.Cleanup();
         Submit();
     }
 
@@ -89,11 +92,12 @@ public partial class CameraRender
         buffer.Clear();
     }
 
-    bool Cull()
+    bool Cull(float maxShadowDistance)
     {
         if(camera.TryGetCullingParameters(out ScriptableCullingParameters p))
         {
             // cull 会在editor scene 地面网格画出来
+            p.shadowDistance = Mathf.Min(maxShadowDistance, camera.farClipPlane);
             cullingResults = context.Cull(ref p);
             return true;
         }
