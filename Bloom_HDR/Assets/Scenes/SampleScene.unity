@@ -155,8 +155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseColor: {r: 0.5647059, g: 1, b: 0.5529412, a: 1}
   alphaCutoff: 0.5
-  metallic: 1
-  smoothness: 0.5
+  metallic: 0.439
+  smoothness: 0.364
 --- !u!135 &188965745
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -247,7 +247,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &372443305
 Transform:
   m_ObjectHideFlags: 0
@@ -400,7 +400,7 @@ Transform:
   - {fileID: 630928799}
   - {fileID: 735585500}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &553613538
 GameObject:
@@ -495,7 +495,7 @@ Transform:
   m_LocalScale: {x: 2.9473, y: 2.9473, z: 2.9473}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &553613543
 MonoBehaviour:
@@ -510,9 +510,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseColor: {r: 1, g: 1, b: 1, a: 1}
-  alphaCutoff: 0.5
+  alphaCutoff: 0
   metallic: 0
-  smoothness: 0.5
+  smoothness: 0.425
 --- !u!1 &630928798
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,7 +529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &630928799
 Transform:
   m_ObjectHideFlags: 0
@@ -639,8 +639,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseColor: {r: 0.5647059, g: 1, b: 0.5529412, a: 1}
   alphaCutoff: 0.5
-  metallic: 1
-  smoothness: 0.5
+  metallic: 0.439
+  smoothness: 0.364
 --- !u!135 &651628520
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -841,8 +841,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseColor: {r: 1, g: 0.6179329, b: 0.5529412, a: 1}
   alphaCutoff: 0.5
-  metallic: 1
-  smoothness: 0.5
+  metallic: 0.439
+  smoothness: 0.364
 --- !u!135 &724138080
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -933,7 +933,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &735585500
 Transform:
   m_ObjectHideFlags: 0
@@ -1126,8 +1126,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseColor: {r: 0.5647059, g: 1, b: 0.5529412, a: 1}
   alphaCutoff: 0.5
-  metallic: 1
-  smoothness: 0.5
+  metallic: 0.439
+  smoothness: 0.364
 --- !u!135 &1268001103
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1236,8 +1236,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseColor: {r: 0.5647059, g: 1, b: 0.5529412, a: 1}
   alphaCutoff: 0.5
-  metallic: 1
-  smoothness: 0.5
+  metallic: 0.439
+  smoothness: 0.364
 --- !u!135 &1439024983
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1346,8 +1346,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseColor: {r: 0.5647059, g: 1, b: 0.5529412, a: 1}
   alphaCutoff: 0.5
-  metallic: 1
-  smoothness: 0.5
+  metallic: 0.439
+  smoothness: 0.364
 --- !u!135 &1748253316
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1530,7 +1530,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -55.279, y: 198.642, z: -303.32}
 --- !u!1 &2032040324
 GameObject:
@@ -1566,8 +1566,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseColor: {r: 0, g: 1, b: 0.8124151, a: 1}
   alphaCutoff: 0.5
-  metallic: 1
-  smoothness: 0.5
+  metallic: 0.439
+  smoothness: 0.364
 --- !u!135 &2032040326
 SphereCollider:
   m_ObjectHideFlags: 0

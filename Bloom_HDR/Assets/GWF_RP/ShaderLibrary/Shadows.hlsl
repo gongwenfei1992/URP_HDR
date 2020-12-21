@@ -17,19 +17,14 @@ struct DirectionalShadowData {
 };
 
 float SampleDirectionalShadowAtlas (float3 positionSTS) {
-	return SAMPLE_TEXTURE2D_SHADOW(
-		_DirectionalShadowAtlas, SHADOW_SAMPLER, positionSTS
-	);
+	return SAMPLE_TEXTURE2D_SHADOW(_DirectionalShadowAtlas, SHADOW_SAMPLER, positionSTS);
 }
 
 float GetDirectionalShadowAttenuation (DirectionalShadowData data, Surface surfaceWS) {
 	if (data.strength <= 0.0) {
 		return 1.0;
 	}
-	float3 positionSTS = mul(
-		_DirectionalShadowMatrices[data.tileIndex],
-		float4(surfaceWS.position, 1.0)
-	).xyz;
+	float3 positionSTS = mul(_DirectionalShadowMatrices[data.tileIndex],float4(surfaceWS.position, 1.0)).xyz;
 	float shadow = SampleDirectionalShadowAtlas(positionSTS);
 	return lerp(1.0, shadow, data.strength);
 }

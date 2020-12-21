@@ -6,7 +6,7 @@ public class Shadows
 
     const int maxShadowedDirectionalLightCount = 4;
 
-    static int dirShadoeAtlasId = Shader.PropertyToID("_DirectionalShadowAtlas"),
+    static int dirShadowAtlasId = Shader.PropertyToID("_DirectionalShadowAtlas"),
         dirShadowMatricesId = Shader.PropertyToID("_DirectionalShadowMatrices");
 
     static Matrix4x4[] dirShadowMatrices = new Matrix4x4[maxShadowedDirectionalLightCount];
@@ -44,19 +44,19 @@ public class Shadows
         }
         else
         {
-            buffer.GetTemporaryRT(dirShadoeAtlasId, 1, 1, 32,FilterMode.Bilinear, RenderTextureFormat.Shadowmap);
+            buffer.GetTemporaryRT(dirShadowAtlasId, 1, 1, 32,FilterMode.Bilinear, RenderTextureFormat.Shadowmap);
         }
     }
 
     void RenderDirectionalShadows() {
         int atlasSize = (int)settings.directional.atlasSize;
-        buffer.GetTemporaryRT(dirShadoeAtlasId, atlasSize, atlasSize,32,FilterMode.Bilinear,RenderTextureFormat.Shadowmap);
-        buffer.SetRenderTarget(dirShadoeAtlasId, RenderBufferLoadAction.DontCare, RenderBufferStoreAction.Store);
+        buffer.GetTemporaryRT(dirShadowAtlasId, atlasSize, atlasSize,32,FilterMode.Bilinear,RenderTextureFormat.Shadowmap);
+        buffer.SetRenderTarget(dirShadowAtlasId, RenderBufferLoadAction.DontCare, RenderBufferStoreAction.Store);
         buffer.ClearRenderTarget(true, false, Color.clear);
         buffer.BeginSample(bufferName);
         ExecuteBuffer();
 
-        int split = ShadowedDirectionalLightCount < 1 ? 1 : 2;
+        int split = ShadowedDirectionalLightCount <= 1 ? 1 : 2;
         int tileSize = atlasSize / split;
 
         for(int i = 0; i < ShadowedDirectionalLightCount; i++)
@@ -75,7 +75,7 @@ public class Shadows
             light.visibleLightIndex, 0, 1, Vector3.zero, tileSize, 0f,
             out Matrix4x4 viewMatrix, out Matrix4x4 projectionMatrix, out ShadowSplitData splitData);
         shadowSettings.splitData = splitData;
-        SetTileViewport(index, split, tileSize);
+        //SetTileViewport(index, split, tileSize);
         dirShadowMatrices[index] = ConvertToAtlasMatrix(projectionMatrix * viewMatrix,SetTileViewport(index,split,tileSize),split);
         buffer.SetViewProjectionMatrices(viewMatrix, projectionMatrix);
         ExecuteBuffer();
@@ -110,6 +110,10 @@ public class Shadows
         m.m11 = (0.5f * (m.m11 + m.m31) + offset.y * m.m31) * scale;
         m.m12 = (0.5f * (m.m12 + m.m32) + offset.y * m.m32) * scale;
         m.m13 = (0.5f * (m.m13 + m.m33) + offset.y * m.m33) * scale;
+        m.m20 = 0.5f * (m.m20 + m.m30);
+        m.m21 = 0.5f * (m.m21 + m.m31);
+        m.m22 = 0.5f * (m.m22 + m.m32);
+        m.m23 = 0.5f * (m.m23 + m.m33);
         return m;
     }
     void ExecuteBuffer()
@@ -137,7 +141,7 @@ public class Shadows
 
     public void Cleanup()
     {
-        buffer.ReleaseTemporaryRT(dirShadoeAtlasId);
+        buffer.ReleaseTemporaryRT(dirShadowAtlasId);
         ExecuteBuffer();
     }
 }
