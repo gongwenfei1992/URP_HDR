@@ -25,7 +25,6 @@ public class Lighting
         this.cullingResults = cullingResults;
         buffer.BeginSample(bufferName);
         SetupLights();
-        //SetupDirectionalLight();
         buffer.EndSample(bufferName);
         context.ExecuteCommandBuffer(buffer);
         buffer.Clear();
@@ -35,9 +34,6 @@ public class Lighting
     {
         dirLightColors[index] = visibleLight.finalColor;
         dirLightDirections[index] = -visibleLight.localToWorldMatrix.GetColumn(2);
-        Light light = RenderSettings.sun;
-        //buffer.SetGlobalVector(dirLightColorId, light.color.linear * light.intensity);
-        //buffer.SetGlobalVector(dirLightDirectionId, -light.transform.forward);
     }
 
     void SetupLights()
