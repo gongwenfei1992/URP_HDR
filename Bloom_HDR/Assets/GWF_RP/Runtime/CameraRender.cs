@@ -72,8 +72,8 @@ public partial class CameraRender
         CameraClearFlags flags = camera.clearFlags;
         buffer.ClearRenderTarget(
             flags <= CameraClearFlags.Depth,
-            flags == CameraClearFlags.Color, 
-            flags == CameraClearFlags.Color?camera.backgroundColor.linear: Color.clear);
+            flags == CameraClearFlags.Color,
+            flags == CameraClearFlags.Color ? camera.backgroundColor.linear : Color.clear);
         buffer.BeginSample(SampleName);       
         ExecuteBuffer();        
         
