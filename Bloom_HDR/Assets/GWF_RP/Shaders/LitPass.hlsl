@@ -59,7 +59,7 @@ float4 LitPassFragment (Varyings input) : SV_TARGET {
 	float4 baseColor = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _BaseColor);
 	float4 col = baseMap * baseColor;
 
-#if defined(_CLIPPING)
+#if defined(_SHADOWS_CLIP)
 	clip(col.a - UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _Cutoff));
 #endif
 
