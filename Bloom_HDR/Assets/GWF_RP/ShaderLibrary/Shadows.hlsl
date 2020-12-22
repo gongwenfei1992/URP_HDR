@@ -47,7 +47,7 @@ ShadowData GetShadowData (Surface surfaceWS) {
 	data.strength = FadedShadowStrength(
 		surfaceWS.depth, _ShadowDistanceFade.x, _ShadowDistanceFade.y
 	);
-	int i;
+	//int i;
 	for(int i = 0;i<_CascadeCount;i++)
 	{
 		float4 sphere = _CascadeCullingSpheres[i];
