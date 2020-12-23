@@ -1483,11 +1483,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 331147505}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f4e5bddc090f46f8acfc6475bf68617, type: 3}
+  m_Script: {fileID: 11500000, guid: 82a71e797dfcf85428db6757be38cea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 3}
-  material: {fileID: 2100000, guid: 9ce407b9b7d2c47128e7fe8386a3b5ab, type: 2}
+  mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  material: {fileID: 2100000, guid: 76e124c8a4cbde248b05389586d475ae, type: 2}
   lightProbeVolume: {fileID: 331147508}
 --- !u!4 &331147507
 Transform:
