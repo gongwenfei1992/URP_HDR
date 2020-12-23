@@ -8,10 +8,10 @@ public class PerObjectMaterialProperties : MonoBehaviour
 		metallicId = Shader.PropertyToID("_Metallic"),
 		smoothnessId = Shader.PropertyToID("_Smoothness"),
         emissionColorId = Shader.PropertyToID("_EmissionColor");
+    static MaterialPropertyBlock block;
 
     [SerializeField]
-    Color baseColor = Color.white;
-    static MaterialPropertyBlock block;
+    Color baseColor = Color.white;  
 
     [SerializeField, Range(0f, 1f)]
     float alphaCutoff = 0.5f, metallic = 0f, smoothness = 0.5f;
