@@ -24,8 +24,10 @@
 		[HDR] _EmissionColor("Emission", Color) = (0.0, 0.0, 0.0, 0.0)
 
 		_DetailMap("Details", 2D) = "linearGrey" {}
+		[NoScaleOffset] _DetailNormalMap("Detail Normals", 2D) = "bump" {}
 		_DetailAlbedo("Detail Albedo", Range(0, 1)) = 1
 		_DetailSmoothness("Detail Smoothness", Range(0, 1)) = 1
+		_DetailNormalScale("Detail Normal Scale", Range(0, 1)) = 1
 
 		[Toggle(_PREMULTIPLY_ALPHA)] _PremulAlpha ("Premultiply Alpha", Float) = 0
 
