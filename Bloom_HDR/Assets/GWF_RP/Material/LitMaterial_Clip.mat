@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: LitMaterial_Clip
   m_Shader: {fileID: 4800000, guid: 1a3927b49d5d16c4aaff40b1edbabef7, type: 3}
-  m_ShaderKeywords: _CLIPPING _RECEIVE_SHADOWS
+  m_ShaderKeywords: _CLIPPING _RECEIVE_SHADOWS _SHADOWS_CLIP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -74,7 +74,7 @@ Material:
     - _Parallax: 0.02
     - _PremulAlpha: 0
     - _ReceiveShadows: 1
-    - _Shadows: 0
+    - _Shadows: 1
     - _Smoothness: 0.95
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -83,5 +83,5 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.90196085, g: 1, b: 0.654902, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

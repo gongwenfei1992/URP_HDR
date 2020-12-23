@@ -16,6 +16,7 @@ public class Shadows
     };
 
     static string[] shadowMaskKeywords = {
+        "_SHADOW_MASK_ALWAYS",
         "_SHADOW_MASK_DISTANCE"
     };
 
@@ -75,7 +76,7 @@ public class Shadows
         }
 
         buffer.BeginSample(bufferName);
-        SetKeywords(shadowMaskKeywords, useShadowMask ? 0 : -1);
+        SetKeywords(shadowMaskKeywords, useShadowMask ? QualitySettings.shadowmaskMode == ShadowmaskMode.Shadowmask ? 0 : 1 : -1);
         buffer.EndSample(bufferName);
         ExecuteBuffer();
     }
@@ -211,7 +212,7 @@ public class Shadows
     {
         if (ShadowedDirectionalLightCount <= maxShadowedDirectionalLightCount
             && light.shadows != LightShadows.None && light.shadowStrength>0f
-            && cullingResults.GetShadowCasterBounds(visibleLightIndex,out Bounds b))
+            )
         {
             LightBakingOutput lightBaking = light.bakingOutput;
             if (
@@ -220,6 +221,13 @@ public class Shadows
             )
             {
                 useShadowMask = true;
+            }
+
+            if (!cullingResults.GetShadowCasterBounds(
+                visibleLightIndex, out Bounds b
+            ))
+            {
+                return new Vector3(-light.shadowStrength, 0f, 0f);
             }
 
             shadowedDirectionalLights[ShadowedDirectionalLightCount] = new ShadowedDirectionalLight
