@@ -41,7 +41,7 @@ float4 LitPassFragment (Varyings input) : SV_TARGET {
 	UNITY_SETUP_INSTANCE_ID(input);
 	float4 col = GetBase(input.baseUV);
 
-#if defined(_SHADOWS_CLIP)
+#if defined(_CLIPPING)
 	clip(col.a - GetCutoff(input.baseUV));
 #endif
 
