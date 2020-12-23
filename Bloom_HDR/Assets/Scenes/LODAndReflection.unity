@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &3634544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +186,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -403,7 +403,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -514,7 +514,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -625,7 +625,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -736,7 +736,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -849,7 +849,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 2
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -960,7 +960,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -1071,7 +1071,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -1182,7 +1182,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -1293,7 +1293,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -1404,7 +1404,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -1515,7 +1515,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -1626,7 +1626,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -1737,7 +1737,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -1848,7 +1848,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -2042,7 +2042,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -2182,7 +2182,7 @@ Transform:
   m_GameObject: {fileID: 490195323}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.51, y: 1.51, z: 1.51}
   m_Children: []
   m_Father: {fileID: 1749060354}
   m_RootOrder: 0
@@ -2264,7 +2264,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -2375,7 +2375,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -2486,7 +2486,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -2597,7 +2597,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -2708,7 +2708,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -2742,6 +2742,70 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680058594}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &692333992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 692333994}
+  - component: {fileID: 692333993}
+  m_Layer: 0
+  m_Name: Reflection Probe (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!215 &692333993
+ReflectionProbe:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692333992}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Type: 0
+  m_Mode: 1
+  m_RefreshMode: 0
+  m_TimeSlicingMode: 0
+  m_Resolution: 256
+  m_UpdateFrequency: 0
+  m_BoxSize: {x: 20, y: 10, z: 20}
+  m_BoxOffset: {x: 0, y: 0, z: 0}
+  m_NearClip: 0.3
+  m_FarClip: 1000
+  m_ShadowDistance: 100
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IntensityMultiplier: 1
+  m_BlendDistance: 1
+  m_HDR: 1
+  m_BoxProjection: 0
+  m_RenderDynamicObjects: 0
+  m_UseOcclusionCulling: 1
+  m_Importance: 1
+  m_CustomBakedTexture: {fileID: 0}
+--- !u!4 &692333994
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692333992}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.26, y: 4.43, z: -0.03}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &797864432
 GameObject:
   m_ObjectHideFlags: 0
@@ -2819,7 +2883,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -2930,7 +2994,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -3041,7 +3105,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -3152,7 +3216,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -3263,7 +3327,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -3374,7 +3438,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -3485,7 +3549,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -3596,7 +3660,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -3707,7 +3771,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -3818,7 +3882,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -3929,7 +3993,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -4040,7 +4104,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -4151,7 +4215,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -4262,7 +4326,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -4373,7 +4437,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -4595,7 +4659,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -4706,7 +4770,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -4787,9 +4851,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseColor: {r: 1, g: 1, b: 1, a: 1}
-  alphaCutoff: 0.5
-  metallic: 0
-  smoothness: 0.5
+  alphaCutoff: 0.528
+  metallic: 0.631
+  smoothness: 1
   emissionColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!135 &1146331015
 SphereCollider:
@@ -4817,7 +4881,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -4928,7 +4992,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -5039,7 +5103,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -5088,7 +5152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1183069025
 Transform:
   m_ObjectHideFlags: 0
@@ -5259,7 +5323,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -5370,7 +5434,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -5404,6 +5468,70 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227056496}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1235547183
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1235547185}
+  - component: {fileID: 1235547184}
+  m_Layer: 0
+  m_Name: Reflection Probe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!215 &1235547184
+ReflectionProbe:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235547183}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Type: 0
+  m_Mode: 1
+  m_RefreshMode: 0
+  m_TimeSlicingMode: 0
+  m_Resolution: 256
+  m_UpdateFrequency: 0
+  m_BoxSize: {x: 20, y: 10, z: 20}
+  m_BoxOffset: {x: 0, y: 0, z: 0}
+  m_NearClip: 0.3
+  m_FarClip: 1000
+  m_ShadowDistance: 100
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IntensityMultiplier: 1
+  m_BlendDistance: 1
+  m_HDR: 1
+  m_BoxProjection: 0
+  m_RenderDynamicObjects: 0
+  m_UseOcclusionCulling: 1
+  m_Importance: 1
+  m_CustomBakedTexture: {fileID: 0}
+--- !u!4 &1235547185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235547183}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.26, y: 3.23, z: -4.46}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1243010080
 GameObject:
   m_ObjectHideFlags: 0
@@ -5481,7 +5609,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -5515,6 +5643,70 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243010080}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1292354485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1292354487}
+  - component: {fileID: 1292354486}
+  m_Layer: 0
+  m_Name: Reflection Probe (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!215 &1292354486
+ReflectionProbe:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292354485}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Type: 0
+  m_Mode: 1
+  m_RefreshMode: 0
+  m_TimeSlicingMode: 0
+  m_Resolution: 256
+  m_UpdateFrequency: 0
+  m_BoxSize: {x: 20, y: 10, z: 20}
+  m_BoxOffset: {x: 0, y: 0, z: 0}
+  m_NearClip: 0.3
+  m_FarClip: 1000
+  m_ShadowDistance: 100
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IntensityMultiplier: 1
+  m_BlendDistance: 1
+  m_HDR: 1
+  m_BoxProjection: 0
+  m_RenderDynamicObjects: 0
+  m_UseOcclusionCulling: 1
+  m_Importance: 1
+  m_CustomBakedTexture: {fileID: 0}
+--- !u!4 &1292354487
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292354485}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.08, y: 1.07, z: -0.95}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1354351982
 GameObject:
   m_ObjectHideFlags: 0
@@ -5592,7 +5784,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -5703,7 +5895,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -5814,7 +6006,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -5925,7 +6117,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -6065,7 +6257,7 @@ Transform:
   m_GameObject: {fileID: 1404244086}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 1749060354}
   m_RootOrder: 1
@@ -6147,7 +6339,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -6258,7 +6450,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -6369,7 +6561,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -6480,7 +6672,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -6591,7 +6783,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -6702,7 +6894,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -6784,8 +6976,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseColor: {r: 0.90196085, g: 1, b: 0.654902, a: 1}
   alphaCutoff: 0.5
-  metallic: 0
-  smoothness: 0.5
+  metallic: 0.559
+  smoothness: 0.345
   emissionColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!135 &1481719775
 SphereCollider:
@@ -6813,7 +7005,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -6924,7 +7116,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -7035,7 +7227,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -7146,7 +7338,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -7257,7 +7449,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -7368,7 +7560,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -7479,7 +7671,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -7590,7 +7782,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -7701,7 +7893,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -7812,7 +8004,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -7923,7 +8115,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -7973,7 +8165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!205 &1749060353
 LODGroup:
   m_ObjectHideFlags: 0
@@ -7983,15 +8175,16 @@ LODGroup:
   m_GameObject: {fileID: 1749060352}
   serializedVersion: 2
   m_LocalReferencePoint: {x: 0, y: 0, z: 0}
-  m_Size: 1
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
+  m_Size: 1.5
+  m_FadeMode: 1
+  m_AnimateCrossFading: 1
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.42274874
-    fadeTransitionWidth: 0
+  - screenRelativeHeight: 0.6021298
+    fadeTransitionWidth: 1
     renderers:
     - renderer: {fileID: 490195324}
+    - renderer: {fileID: 1404244087}
   - screenRelativeHeight: 0.1803303
     fadeTransitionWidth: 0
     renderers:
@@ -8097,7 +8290,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 2
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -8208,7 +8401,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -8319,7 +8512,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -8430,7 +8623,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -8541,7 +8734,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -8652,7 +8845,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -8763,7 +8956,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -8874,7 +9067,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -8985,7 +9178,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -9096,7 +9289,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -9207,7 +9400,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -9318,7 +9511,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -9429,7 +9622,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -9540,7 +9733,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -9651,7 +9844,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 3
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
