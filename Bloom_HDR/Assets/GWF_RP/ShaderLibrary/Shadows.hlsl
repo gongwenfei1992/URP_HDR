@@ -14,7 +14,6 @@
 	#define DIRECTIONAL_FILTER_SETUP SampleShadow_ComputeSamples_Tent_7x7
 #endif
 
-
 #define MAX_SHADOWED_DIRECTIONAL_LIGHT_COUNT 4
 #define MAX_CASCADE_COUNT 4
 
@@ -26,9 +25,10 @@ CBUFFER_START(_CustomShadows)
 	int _CascadeCount;
 	float4 _CascadeCullingSpheres[MAX_CASCADE_COUNT];
 	float4 _CascadeData[MAX_CASCADE_COUNT];
-	float4x4 _DirectionalShadowMatrices[MAX_SHADOWED_DIRECTIONAL_LIGHT_COUNT* MAX_CASCADE_COUNT];
+	float4x4 _DirectionalShadowMatrices
+		[MAX_SHADOWED_DIRECTIONAL_LIGHT_COUNT * MAX_CASCADE_COUNT];
 	float4 _ShadowAtlasSize;
-	float4 _ShadowDistanceFade;	
+	float4 _ShadowDistanceFade;
 CBUFFER_END
 
 struct ShadowMask {
@@ -37,12 +37,45 @@ struct ShadowMask {
 	float4 shadows;
 };
 
-struct ShadowData{
+float GetBakedShadow (ShadowMask mask, int channel) {
+	float shadow = 1.0;
+	if (mask.always || mask.distance) {
+		if (channel >= 0) {
+			shadow = mask.shadows[channel];
+		}
+	}
+	return shadow;
+}
+
+float GetBakedShadow (ShadowMask mask, int channel, float strength) {
+	if (mask.always || mask.distance) {
+		return lerp(1.0, GetBakedShadow(mask, channel), strength);
+	}
+	return 1.0;
+}
+
+struct ShadowData {
 	int cascadeIndex;
 	float cascadeBlend;
 	float strength;
 	ShadowMask shadowMask;
 };
+
+float MixBakedAndRealtimeShadows (
+	ShadowData global, float shadow, int shadowMaskChannel, float strength
+) {
+	float baked = GetBakedShadow(global.shadowMask, shadowMaskChannel);
+	if (global.shadowMask.always) {
+		shadow = lerp(1.0, shadow, global.strength);
+		shadow = min(baked, shadow);
+		return lerp(1.0, shadow, strength);
+	}
+	if (global.shadowMask.distance) {
+		shadow = lerp(baked, shadow, global.strength);
+		return lerp(1.0, shadow, strength);
+	}
+	return lerp(1.0, shadow, strength * global.strength);
+}
 
 float FadedShadowStrength (float distance, float scale, float fade) {
 	return saturate((1.0 - distance * scale) * fade);
@@ -57,49 +90,50 @@ ShadowData GetShadowData (Surface surfaceWS) {
 	data.strength = FadedShadowStrength(
 		surfaceWS.depth, _ShadowDistanceFade.x, _ShadowDistanceFade.y
 	);
-	//int i;
-	for(int i = 0;i<_CascadeCount;i++)
-	{
+	int i;
+	for (i = 0; i < _CascadeCount; i++) {
 		float4 sphere = _CascadeCullingSpheres[i];
-		float distanceSqr = DistanceSquared(surfaceWS.position,sphere.xyz);
-		if(distanceSqr<sphere.w)
-		{
-			float fade = FadedShadowStrength(distanceSqr, _CascadeData[i].x, _ShadowDistanceFade.z);
-			if (i == _CascadeCount - 1) 
-			{
-				data.strength *=fade;
+		float distanceSqr = DistanceSquared(surfaceWS.position, sphere.xyz);
+		if (distanceSqr < sphere.w) {
+			float fade = FadedShadowStrength(
+				distanceSqr, _CascadeData[i].x, _ShadowDistanceFade.z
+			);
+			if (i == _CascadeCount - 1) {
+				data.strength *= fade;
 			}
-			else
-			{
+			else {
 				data.cascadeBlend = fade;
 			}
 			break;
 		}
 	}
-	if(i == _CascadeCount){
+	
+	if (i == _CascadeCount) {
 		data.strength = 0.0;
 	}
-#if defined(_CASCADE_BLEND_DITHER)
-	else if (data.cascadeBlend < surfaceWS.dither) {
-		i += 1;
-	}
-#endif
-#if !defined(_CASCADE_BLEND_SOFT)
-	data.cascadeBlend = 1.0;
-#endif
+	#if defined(_CASCADE_BLEND_DITHER)
+		else if (data.cascadeBlend < surfaceWS.dither) {
+			i += 1;
+		}
+	#endif
+	#if !defined(_CASCADE_BLEND_SOFT)
+		data.cascadeBlend = 1.0;
+	#endif
 	data.cascadeIndex = i;
 	return data;
 }
-
 
 struct DirectionalShadowData {
 	float strength;
 	int tileIndex;
 	float normalBias;
+	int shadowMaskChannel;
 };
 
 float SampleDirectionalShadowAtlas (float3 positionSTS) {
-	return SAMPLE_TEXTURE2D_SHADOW(_DirectionalShadowAtlas, SHADOW_SAMPLER, positionSTS);
+	return SAMPLE_TEXTURE2D_SHADOW(
+		_DirectionalShadowAtlas, SHADOW_SAMPLER, positionSTS
+	);
 }
 
 float FilterDirectionalShadow (float3 positionSTS) {
@@ -144,47 +178,22 @@ float GetCascadedShadow (
 	return shadow;
 }
 
-float GetBakedShadow (ShadowMask mask) {
-	float shadow = 1.0;
-	if (mask.always || mask.distance) {
-		shadow = mask.shadows.r;
-	}
-	return shadow;
-}
+float GetDirectionalShadowAttenuation (	DirectionalShadowData directional, ShadowData global, Surface surfaceWS) {
 
-float GetBakedShadow (ShadowMask mask, float strength) {
-	if (mask.always || mask.distance) {
-		return lerp(1.0, GetBakedShadow(mask), strength);
-	}
-	return 1.0;
-}
+	#if !defined(_RECEIVE_SHADOWS)
+		return 1.0;
+	#endif
 
-float MixBakedAndRealtimeShadows (
-	ShadowData global, float shadow, float strength
-) {
-	float baked = GetBakedShadow(global.shadowMask);
-	if (global.shadowMask.always) {
-		shadow = lerp(1.0, shadow, global.strength);
-		shadow = min(baked, shadow);
-		return lerp(1.0, shadow, strength);
-	}
-	if (global.shadowMask.distance) {
-		shadow = lerp(baked, shadow, global.strength);
-		return lerp(1.0, shadow, strength);
-	}
-	return lerp(1.0, shadow, strength * global.strength);
-}
-
-float GetDirectionalShadowAttenuation (DirectionalShadowData directional,ShadowData global, Surface surfaceWS) {
-#if !defined(_RECEIVE_SHADOWS)
-	return 1.0;
-#endif
 	float shadow;
 	if (directional.strength * global.strength <= 0.0) {
-		shadow =GetBakedShadow(global.shadowMask, abs(directional.strength));
-	}else{
+		shadow = GetBakedShadow(global.shadowMask, directional.shadowMaskChannel,abs(directional.strength));
+	}
+	else 
+	{
 		shadow = GetCascadedShadow(directional, global, surfaceWS);
-		shadow = MixBakedAndRealtimeShadows(global, shadow, directional.strength);
+		shadow = MixBakedAndRealtimeShadows(
+			global, shadow, directional.shadowMaskChannel, directional.strength
+		);
 	}
 	return shadow;
 }

@@ -74,6 +74,10 @@ float3 SampleLightProbe (Surface surfaceWS) {
 	#endif
 }
 
+float4 SampleLightProbeOcclusion (Surface surfaceWS) {
+	return unity_ProbesOcclusion;
+}
+
 float4 SampleBakedShadows (float2 lightMapUV,Surface surfaceWS) {
 	#if defined(LIGHTMAP_ON)
 		return SAMPLE_TEXTURE2D(
@@ -105,7 +109,7 @@ GI GetGI (float2 lightMapUV, Surface surfaceWS) {
 	gi.shadowMask.shadows = SampleBakedShadows(lightMapUV, surfaceWS);
 #elif defined(_SHADOW_MASK_DISTANCE)
 	gi.shadowMask.distance = true;
-	gi.shadowMask.shadows = SampleBakedShadows(lightMapUV,surfaceWS);
+	gi.shadowMask.shadows = SampleBakedShadows(lightMapUV, surfaceWS);
 #endif
 	return gi;
 }
