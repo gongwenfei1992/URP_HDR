@@ -409,7 +409,7 @@ MonoBehaviour:
   alphaCutoff: 0.5
   metallic: 1
   smoothness: 0.95
-  emissionColor: {r: 1, g: 1, b: 1, a: 1}
+  emissionColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1870720173
 GameObject:
   m_ObjectHideFlags: 0
