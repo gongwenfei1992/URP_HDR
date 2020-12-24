@@ -320,10 +320,12 @@ public class Shadows
 		float texelSize = 2f / (tileSize * projectionMatrix.m00);
 		float filterSize = texelSize * ((float)settings.other.filter + 1f);
 		float bias = light.normalBias * filterSize * 1.4142136f;
-		SetOtherTileData(index, bias);
+		Vector2 offset = SetTileViewport(index, split, tileSize);
+		float tileScale = 1f / split;
+		SetOtherTileData(index,offset, tileScale, bias);
 		otherShadowMatrices[index] = ConvertToAtlasMatrix(
 			projectionMatrix * viewMatrix,
-			SetTileViewport(index, split, tileSize), split
+			offset, tileScale
 		);
 		buffer.SetViewProjectionMatrices(viewMatrix, projectionMatrix);
 		buffer.SetGlobalDepthBias(0f, light.slopeScaleBias);
@@ -357,7 +359,7 @@ public class Shadows
 		Vector3 ratios = settings.directional.CascadeRatios;
 		float cullingFactor =
 			Mathf.Max(0f, 0.8f - settings.directional.cascadeFade);
-
+		float tileScale = 1f / split;
 		for (int i = 0; i < cascadeCount; i++)
 		{
 			cullingResults.ComputeDirectionalShadowMatricesAndCullingPrimitives(
@@ -374,7 +376,7 @@ public class Shadows
 			int tileIndex = tileOffset + i;
 			dirShadowMatrices[tileIndex] = ConvertToAtlasMatrix(
 				projectionMatrix * viewMatrix,
-				SetTileViewport(tileIndex, split, tileSize), split
+				SetTileViewport(tileIndex, split, tileSize), tileScale
 			);
 			buffer.SetViewProjectionMatrices(viewMatrix, projectionMatrix);
 			buffer.SetGlobalDepthBias(0f, light.slopeScaleBias);
@@ -397,7 +399,7 @@ public class Shadows
 		);
 	}
 
-	Matrix4x4 ConvertToAtlasMatrix(Matrix4x4 m, Vector2 offset, int split)
+	Matrix4x4 ConvertToAtlasMatrix(Matrix4x4 m, Vector2 offset, float scale)
 	{
 		if (SystemInfo.usesReversedZBuffer)
 		{
@@ -406,7 +408,6 @@ public class Shadows
 			m.m22 = -m.m22;
 			m.m23 = -m.m23;
 		}
-		float scale = 1f / split;
 		m.m00 = (0.5f * (m.m00 + m.m30) + offset.x * m.m30) * scale;
 		m.m01 = (0.5f * (m.m01 + m.m31) + offset.x * m.m31) * scale;
 		m.m02 = (0.5f * (m.m02 + m.m32) + offset.x * m.m32) * scale;
@@ -430,9 +431,13 @@ public class Shadows
 		));
 		return offset;
 	}
-	void SetOtherTileData(int index, float bias)
+	void SetOtherTileData(int index, Vector2 offset, float scale, float bias)
 	{
-		Vector4 data = Vector4.zero;
+		float border = atlasSizes.w * 0.5f;
+		Vector4 data;
+		data.x = offset.x * scale + border;
+		data.y = offset.y * scale + border;
+		data.z = scale - border - border;
 		data.w = bias;
 		otherShadowTiles[index] = data;
 	}

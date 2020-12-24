@@ -177,13 +177,14 @@ float FilterDirectionalShadow (float3 positionSTS) {
 	#endif
 }
 
-float SampleOtherShadowAtlas (float3 positionSTS) {
+float SampleOtherShadowAtlas (float3 positionSTS, float3 bounds) {
+	positionSTS.xy = clamp(positionSTS.xy, bounds.xy, bounds.xy + bounds.z);
 	return SAMPLE_TEXTURE2D_SHADOW(
 		_OtherShadowAtlas, SHADOW_SAMPLER, positionSTS
 	);
 }
 
-float FilterOtherShadow (float3 positionSTS) {
+float FilterOtherShadow (float3 positionSTS, float3 bounds) {
 	#if defined(OTHER_FILTER_SETUP)
 		real weights[OTHER_FILTER_SAMPLES];
 		real2 positions[OTHER_FILTER_SAMPLES];
@@ -192,12 +193,12 @@ float FilterOtherShadow (float3 positionSTS) {
 		float shadow = 0;
 		for (int i = 0; i < OTHER_FILTER_SAMPLES; i++) {
 			shadow += weights[i] * SampleOtherShadowAtlas(
-				float3(positions[i].xy, positionSTS.z)
+				float3(positions[i].xy, positionSTS.z),bounds
 			);
 		}
 		return shadow;
 	#else
-		return SampleOtherShadowAtlas(positionSTS);
+		return SampleOtherShadowAtlas(positionSTS,bounds);
 	#endif
 }
 
@@ -255,7 +256,7 @@ float GetOtherShadow (OtherShadowData other, ShadowData global, Surface surfaceW
 		_OtherShadowMatrices[other.tileIndex],
 		float4(surfaceWS.position + normalBias, 1.0)
 	);
-	return FilterOtherShadow(positionSTS.xyz / positionSTS.w);
+	return FilterOtherShadow(positionSTS.xyz / positionSTS.w,tileData.xyz);
 }
 
 float GetOtherShadowAttenuation (
