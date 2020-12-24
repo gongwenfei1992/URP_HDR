@@ -16,8 +16,10 @@ public partial class CameraRender
     static ShaderTagId
         unlitShaderTagId = new ShaderTagId("SRPDefaultUnlit"),
         litShaderTagId = new ShaderTagId("CustomLit");
-
+    static int frameBufferId = Shader.PropertyToID("_CameraFrameBuffer");
     Lighting lighting = new Lighting();
+
+    PostFXStack postFXStack = new PostFXStack();
     
     public void Render(ScriptableRenderContext context, Camera camera,bool useDynamicBatching, bool useGPUInstancing,bool useLightsPerObject, ShadowSettings shadowSettings, PostFXSettings postFXSettings)
     {
@@ -32,13 +34,17 @@ public partial class CameraRender
         buffer.BeginSample(SampleName);
         ExecuteBuffer();
         lighting.Setup(context,cullingResults,useLightsPerObject,shadowSettings);
-
+        postFXStack.Setup(context, camera, postFXSettings);
         buffer.EndSample(SampleName);
         Setup();
         DrawVisibleGeometry(useDynamicBatching, useGPUInstancing,useLightsPerObject);
         DrawUnsupportedShader();
         DrawGizmos();
-        lighting.Cleanup();
+        if (postFXStack.IsActive)
+        {
+            postFXStack.Render(frameBufferId);
+        }
+        Cleanup();
         Submit();
     }
 
@@ -78,6 +84,24 @@ public partial class CameraRender
     {
         context.SetupCameraProperties(camera);
         CameraClearFlags flags = camera.clearFlags;
+
+        if (postFXStack.IsActive)
+        {
+            if (flags > CameraClearFlags.Color)
+            {
+                flags = CameraClearFlags.Color;
+            }
+            buffer.GetTemporaryRT(
+                frameBufferId, camera.pixelWidth, camera.pixelHeight,
+                32, FilterMode.Bilinear, RenderTextureFormat.Default
+            );
+            buffer.SetRenderTarget(
+                frameBufferId,
+                RenderBufferLoadAction.DontCare, RenderBufferStoreAction.Store
+            );
+        }
+
+
         buffer.ClearRenderTarget(
             flags <= CameraClearFlags.Depth,
             flags == CameraClearFlags.Color,
@@ -111,5 +135,14 @@ public partial class CameraRender
         }
         return false;
     }
-  
+
+    void Cleanup()
+    {
+        lighting.Cleanup();
+        if (postFXStack.IsActive)
+        {
+            buffer.ReleaseTemporaryRT(frameBufferId);
+        }
+    }
+
 }
