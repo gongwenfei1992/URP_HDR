@@ -153,15 +153,19 @@ public class Lighting
 		dirLightShadowData[index] =	shadows.ReserveDirectionalShadows(visibleLight.light, visibleIndex);
 	}
 
-	void SetupPointLight(int index, int visibleIndex, ref VisibleLight visibleLight)
+	void SetupPointLight(
+		int index, int visibleIndex, ref VisibleLight visibleLight
+	)
 	{
 		otherLightColors[index] = visibleLight.finalColor;
 		Vector4 position = visibleLight.localToWorldMatrix.GetColumn(3);
 		position.w =
 			1f / Mathf.Max(visibleLight.range * visibleLight.range, 0.00001f);
 		otherLightPositions[index] = position;
+		otherLightSpotAngles[index] = new Vector4(0f, 1f);
 		Light light = visibleLight.light;
-		otherLightShadowData[index] = shadows.ReserveOtherShadows(light, visibleIndex);
+		otherLightShadowData[index] =
+			shadows.ReserveOtherShadows(light, visibleIndex);
 	}
 
 	void SetupSpotLight(int index, int visibleIndex, ref VisibleLight visibleLight)
