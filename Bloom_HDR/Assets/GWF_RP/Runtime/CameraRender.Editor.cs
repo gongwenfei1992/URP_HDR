@@ -6,7 +6,9 @@ using UnityEditor;
 using UnityEngine.Profiling;
 partial class CameraRender
 {
-    partial void DrawGizmos();
+    partial void DrawGizmosBeforeFX();
+
+    partial void DrawGizmosAfterFX();
     partial void DrawUnsupportedShader();
     partial void PrepareForSceneWindow();
     partial void PrepareBuffer();
@@ -23,11 +25,18 @@ partial class CameraRender
     };
     string SampleName { get; set; }
     static Material errorMaterial;
-    partial void DrawGizmos()
+    partial void DrawGizmosBeforeFX()
     {
         if (Handles.ShouldRenderGizmos())
         {
             context.DrawGizmos(camera, GizmoSubset.PreImageEffects);
+        }
+    }
+
+    partial void DrawGizmosAfterFX()
+    {
+        if (Handles.ShouldRenderGizmos())
+        {
             context.DrawGizmos(camera, GizmoSubset.PostImageEffects);
         }
     }
