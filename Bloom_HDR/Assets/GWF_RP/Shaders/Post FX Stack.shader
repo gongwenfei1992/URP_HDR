@@ -79,6 +79,16 @@
 				#pragma fragment BloomVerticalPassFragment
 			ENDHLSL
 		}
+
+		Pass {
+			Name "Copy"
+			
+			HLSLPROGRAM
+				#pragma target 3.5
+				#pragma vertex DefaultPassVertex
+				#pragma fragment CopyPassFragment
+			ENDHLSL
+		}
 		//7
 		Pass {
 			Name "Tone Mapping None"
@@ -121,12 +131,12 @@
 		}
 		//11
 		Pass {
-			Name "Copy"
+			Name "Final Pass"
 			
 			HLSLPROGRAM
 				#pragma target 3.5
 				#pragma vertex DefaultPassVertex
-				#pragma fragment CopyPassFragment
+				#pragma fragment FinalPassFragment
 			ENDHLSL
 		}
 	}

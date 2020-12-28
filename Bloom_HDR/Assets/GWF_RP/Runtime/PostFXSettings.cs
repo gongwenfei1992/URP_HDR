@@ -9,6 +9,18 @@ public class PostFXSettings : ScriptableObject
 
 	[System.NonSerialized]
 	Material material;
+	public Material Material
+	{
+		get
+		{
+			if (material == null && shader != null)
+			{
+				material = new Material(shader);
+				material.hideFlags = HideFlags.HideAndDontSave;
+			}
+			return material;
+		}
+	}
 
 	[Serializable]
 	public struct ColorAdjustmentsSettings 
@@ -89,17 +101,82 @@ public class PostFXSettings : ScriptableObject
 	ToneMappingSettings toneMapping = default;
 
 	public ToneMappingSettings ToneMapping => toneMapping;
-	public Material Material
+
+	[Serializable]
+	public struct WhiteBalanceSettings
 	{
-		get
+
+		[Range(-100f, 100f)]
+		public float temperature, tint;
+	}
+
+	[SerializeField]
+	WhiteBalanceSettings whiteBalance = default;
+
+	public WhiteBalanceSettings WhiteBalance => whiteBalance;
+
+
+	[Serializable]
+	public struct SplitToningSettings
+	{
+
+		[ColorUsage(false)]
+		public Color shadows, highlights;
+
+		[Range(-100f, 100f)]
+		public float balance;
+	}
+
+	[SerializeField]
+	SplitToningSettings splitToning = new SplitToningSettings
+	{
+		shadows = Color.gray,
+		highlights = Color.gray
+	};
+
+	public SplitToningSettings SplitToning => splitToning;
+
+	[Serializable]
+	public struct ChannelMixerSettings
+	{
+
+		public Vector3 red, green, blue;
+	}
+
+	[SerializeField]
+	ChannelMixerSettings channelMixer = new ChannelMixerSettings
+	{
+		red = Vector3.right,
+		green = Vector3.up,
+		blue = Vector3.forward
+	};
+
+	public ChannelMixerSettings ChannelMixer => channelMixer;
+
+	[Serializable]
+	public struct ShadowsMidtonesHighlightsSettings
+	{
+
+		[ColorUsage(false, true)]
+		public Color shadows, midtones, highlights;
+
+		[Range(0f, 2f)]
+		public float shadowsStart, shadowsEnd, highlightsStart, highLightsEnd;
+	}
+
+	[SerializeField]
+	ShadowsMidtonesHighlightsSettings
+		shadowsMidtonesHighlights = new ShadowsMidtonesHighlightsSettings
 		{
-			if (material == null && shader != null)
-			{
-				material = new Material(shader);
-				material.hideFlags = HideFlags.HideAndDontSave;
-			}
-			return material;
-		}
-	}	
+			shadows = Color.white,
+			midtones = Color.white,
+			highlights = Color.white,
+			shadowsEnd = 0.3f,
+			highlightsStart = 0.55f,
+			highLightsEnd = 1f
+		};
+
+	public ShadowsMidtonesHighlightsSettings ShadowsMidtonesHighlights =>
+		shadowsMidtonesHighlights;
 
 }
