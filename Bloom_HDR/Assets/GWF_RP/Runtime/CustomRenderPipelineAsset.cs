@@ -5,6 +5,8 @@ using UnityEngine;
 public class CustomRenderPipelineAsset : RenderPipelineAsset
 {
     [SerializeField]
+    bool allowHDR = true;
+    [SerializeField]
     bool useDynamicBatching = true, useGPUInstancing = true, useSRPBatcher = true,useLightsPerObject = true;
     [SerializeField]
     ShadowSettings shadows = default;
@@ -12,6 +14,6 @@ public class CustomRenderPipelineAsset : RenderPipelineAsset
     PostFXSettings postFXSettings = default;
     protected override RenderPipeline CreatePipeline()
     {
-        return new CustomRenderPipeline(useDynamicBatching, useGPUInstancing, useSRPBatcher, useLightsPerObject, shadows,postFXSettings);
+        return new CustomRenderPipeline(allowHDR, useDynamicBatching, useGPUInstancing, useSRPBatcher, useLightsPerObject, shadows,postFXSettings);
     }
 }

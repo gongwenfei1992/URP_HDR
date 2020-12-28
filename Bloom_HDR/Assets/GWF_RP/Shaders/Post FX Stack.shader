@@ -9,7 +9,17 @@
 		#include "../ShaderLibrary/Common.hlsl"
 		#include "PostFXStackPasses.hlsl"
 		ENDHLSL
-
+		//0
+		Pass {
+			Name "Bloom BloomPrefilterFireflies"
+			
+			HLSLPROGRAM
+				#pragma target 3.5
+				#pragma vertex DefaultPassVertex
+				#pragma fragment BloomPrefilterFirefliesPassFragment
+			ENDHLSL
+		}
+		//1
 		Pass {
 			Name "Bloom BloomPrefilter"
 			
@@ -19,17 +29,37 @@
 				#pragma fragment BloomPrefilterPassFragment
 			ENDHLSL
 		}
-
+		//2
 		Pass {
-			Name "Bloom BloomCombine"
+			Name "Bloom BloomAdd"
 			
 			HLSLPROGRAM
 				#pragma target 3.5
 				#pragma vertex DefaultPassVertex
-				#pragma fragment BloomCombinePassFragment
+				#pragma fragment BloomAddPassFragment
 			ENDHLSL
 		}
-
+		//3
+		Pass {
+			Name "Bloom BloomScatter"
+			
+			HLSLPROGRAM
+				#pragma target 3.5
+				#pragma vertex DefaultPassVertex
+				#pragma fragment BloomScatterPassFragment
+			ENDHLSL
+		}
+		//4
+		Pass {
+			Name "Bloom BloomScatterFinal"
+			
+			HLSLPROGRAM
+				#pragma target 3.5
+				#pragma vertex DefaultPassVertex
+				#pragma fragment BloomScatterFinalPassFragment 
+			ENDHLSL
+		}
+		//5
 		Pass {
 			Name "Bloom Horizontal"
 			
@@ -39,7 +69,7 @@
 				#pragma fragment BloomHorizontalPassFragment
 			ENDHLSL
 		}
-
+		//6
 		Pass {
 			Name "Bloom Vertical"
 			
@@ -49,7 +79,37 @@
 				#pragma fragment BloomVerticalPassFragment
 			ENDHLSL
 		}
-
+		//7
+		Pass {
+			Name "Tone Mapping ACES"
+			
+			HLSLPROGRAM
+				#pragma target 3.5
+				#pragma vertex DefaultPassVertex
+				#pragma fragment ToneMappingACESPassFragment
+			ENDHLSL
+		}
+		//8
+		Pass {
+			Name "Tone Mapping Neutral"
+			
+			HLSLPROGRAM
+				#pragma target 3.5
+				#pragma vertex DefaultPassVertex
+				#pragma fragment ToneMappingNeutralPassFragment
+			ENDHLSL
+		}	
+		//9
+		Pass {
+			Name "Tone Mapping Reinhard"
+			
+			HLSLPROGRAM
+				#pragma target 3.5
+				#pragma vertex DefaultPassVertex
+				#pragma fragment ToneMappingReinhardPassFragment
+			ENDHLSL
+		}
+		//10
 		Pass {
 			Name "Copy"
 			
