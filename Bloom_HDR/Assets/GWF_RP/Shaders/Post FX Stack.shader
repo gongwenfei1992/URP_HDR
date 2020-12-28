@@ -81,6 +81,16 @@
 		}
 		//7
 		Pass {
+			Name "Tone Mapping None"
+			
+			HLSLPROGRAM
+				#pragma target 3.5
+				#pragma vertex DefaultPassVertex
+				#pragma fragment ToneMappingNonePassFragment
+			ENDHLSL
+		}
+		//8
+		Pass {
 			Name "Tone Mapping ACES"
 			
 			HLSLPROGRAM
@@ -89,7 +99,7 @@
 				#pragma fragment ToneMappingACESPassFragment
 			ENDHLSL
 		}
-		//8
+		//9
 		Pass {
 			Name "Tone Mapping Neutral"
 			
@@ -99,7 +109,7 @@
 				#pragma fragment ToneMappingNeutralPassFragment
 			ENDHLSL
 		}	
-		//9
+		//10
 		Pass {
 			Name "Tone Mapping Reinhard"
 			
@@ -109,7 +119,7 @@
 				#pragma fragment ToneMappingReinhardPassFragment
 			ENDHLSL
 		}
-		//10
+		//11
 		Pass {
 			Name "Copy"
 			

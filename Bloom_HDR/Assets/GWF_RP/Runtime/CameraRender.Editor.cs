@@ -7,7 +7,6 @@ using UnityEngine.Profiling;
 partial class CameraRender
 {
     partial void DrawGizmosBeforeFX();
-
     partial void DrawGizmosAfterFX();
     partial void DrawUnsupportedShader();
     partial void PrepareForSceneWindow();
