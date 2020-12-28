@@ -27,7 +27,8 @@ partial class CameraRender
     static Material errorMaterial;
     partial void DrawGizmosBeforeFX()
     {
-        if (Handles.ShouldRenderGizmos())
+        //作者没有写下camera.cameraType == CameraType.SceneView的判断
+        if (Handles.ShouldRenderGizmos() && camera.cameraType == CameraType.SceneView)
         {
             context.DrawGizmos(camera, GizmoSubset.PreImageEffects);
         }
@@ -35,7 +36,8 @@ partial class CameraRender
 
     partial void DrawGizmosAfterFX()
     {
-        if (Handles.ShouldRenderGizmos())
+        //作者没有写下camera.cameraType == CameraType.SceneView的判断
+        if (Handles.ShouldRenderGizmos() && camera.cameraType == CameraType.SceneView)
         {
             context.DrawGizmos(camera, GizmoSubset.PostImageEffects);
         }
