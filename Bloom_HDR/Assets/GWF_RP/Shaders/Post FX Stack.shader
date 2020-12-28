@@ -11,6 +11,16 @@
 		ENDHLSL
 
 		Pass {
+			Name "Bloom BloomPrefilter"
+			
+			HLSLPROGRAM
+				#pragma target 3.5
+				#pragma vertex DefaultPassVertex
+				#pragma fragment BloomPrefilterPassFragment
+			ENDHLSL
+		}
+
+		Pass {
 			Name "Bloom BloomCombine"
 			
 			HLSLPROGRAM
