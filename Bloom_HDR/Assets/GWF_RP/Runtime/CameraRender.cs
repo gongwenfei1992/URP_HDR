@@ -43,11 +43,13 @@ public partial class CameraRender
         useHDR = allowHDR && camera.allowHDR;
         buffer.BeginSample(SampleName);
         ExecuteBuffer();
-        lighting.Setup(context,cullingResults,useLightsPerObject,shadowSettings);
+        lighting.Setup(context,cullingResults,useLightsPerObject,shadowSettings,
+            cameraSettings.maskLights ? cameraSettings.renderingLayerMask : -1);
         postFXStack.Setup(context, camera, postFXSettings,useHDR,colorLUTResolution, cameraSettings.finalBlendMode);
         buffer.EndSample(SampleName);
         Setup();
-        DrawVisibleGeometry(useDynamicBatching, useGPUInstancing,useLightsPerObject);
+        DrawVisibleGeometry(useDynamicBatching, useGPUInstancing,useLightsPerObject,
+            cameraSettings.renderingLayerMask);
         DrawUnsupportedShader();
         DrawGizmosBeforeFX();
         if (postFXStack.IsActive)
@@ -59,7 +61,7 @@ public partial class CameraRender
         Submit();
     }
 
-    void DrawVisibleGeometry(bool useDynamicBatching, bool useGPUInstancing,bool useLightsPerObject)
+    void DrawVisibleGeometry(bool useDynamicBatching, bool useGPUInstancing,bool useLightsPerObject,int renderingLayerMask)
     {
         PerObjectData lightsPerObjectFlags = useLightsPerObject ?
         PerObjectData.LightData | PerObjectData.LightIndices :
@@ -75,7 +77,7 @@ public partial class CameraRender
                 PerObjectData.OcclusionProbeProxyVolume|lightsPerObjectFlags
         };
         drawingSettings.SetShaderPassName(1, litShaderTagId);
-        FilteringSettings filteringSettings = new FilteringSettings(RenderQueueRange.opaque);
+        FilteringSettings filteringSettings = new FilteringSettings(RenderQueueRange.opaque, renderingLayerMask: (uint)renderingLayerMask);
 
         context.DrawRenderers(cullingResults, ref drawingSettings, ref filteringSettings);
 

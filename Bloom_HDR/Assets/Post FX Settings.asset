@@ -15,22 +15,22 @@ MonoBehaviour:
   shader: {fileID: 4800000, guid: 1193c4d55b9f8484f803d780e3a81762, type: 3}
   colorAdjustments:
     postExposure: 0
-    contrast: -26.9
+    contrast: 0
     colorFilter: {r: 1, g: 1, b: 1, a: 1}
     hueShift: 0
-    saturation: 0
+    saturation: 28
   bloom:
     maxIterations: 16
     downscaleLimit: 2
     bicubicUpsampling: 1
     threshold: 1
     thresholdKnee: 0.5
-    intensity: 1
+    intensity: 0.2
     fadeFireflies: 1
     mode: 1
     scatter: 0.7
   toneMapping:
-    mode: 0
+    mode: 1
   whiteBalance:
     temperature: 0
     tint: 0
@@ -43,9 +43,9 @@ MonoBehaviour:
     green: {x: 0, y: 1, z: 0}
     blue: {x: 0, y: 0, z: 1}
   shadowsMidtonesHighlights:
-    shadows: {r: 1, g: 1, b: 1, a: 1}
-    midtones: {r: 1, g: 1, b: 1, a: 1}
-    highlights: {r: 1, g: 1, b: 1, a: 1}
+    shadows: {r: 0.7454045, g: 0.61720675, b: 1, a: 1}
+    midtones: {r: 0.8631574, g: 0.7454045, b: 0.7454045, a: 1}
+    highlights: {r: 1, g: 0.89626956, b: 0.79129815, a: 1}
     shadowsStart: 0
     shadowsEnd: 0.3
     highlightsStart: 0.55
