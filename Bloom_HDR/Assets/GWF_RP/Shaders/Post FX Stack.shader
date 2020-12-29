@@ -132,6 +132,8 @@
 		//11
 		Pass {
 			Name "Final Pass"
+
+			Blend [_FinalSrcBlend] [_FinalDstBlend]
 			
 			HLSLPROGRAM
 				#pragma target 3.5

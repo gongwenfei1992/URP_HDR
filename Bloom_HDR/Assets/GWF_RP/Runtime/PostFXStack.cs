@@ -31,6 +31,10 @@ public partial class PostFXStack
 		fxSourceId = Shader.PropertyToID("_PostFXSource"),
 		fxSource2Id = Shader.PropertyToID("_PostFXSource2");
 
+	int
+		finalSrcBlendId = Shader.PropertyToID("_FinalSrcBlend"),
+		finalDstBlendId = Shader.PropertyToID("_FinalDstBlend");
+
 	int bloomPyramidId;
 	int colorLUTResolution;
 	CommandBuffer buffer = new CommandBuffer
@@ -43,7 +47,7 @@ public partial class PostFXStack
 	Camera camera;
 
 	PostFXSettings settings;
-
+	CameraSettings.FinalBlendMode finalBlendMode;
 	public bool IsActive => settings != null;
 	enum Pass
 	{
@@ -62,8 +66,9 @@ public partial class PostFXStack
 		Final
 	}
 	public void Setup(ScriptableRenderContext context, Camera camera, PostFXSettings settings,bool useHDR,
-		int colorLUTResolution)
+		int colorLUTResolution, CameraSettings.FinalBlendMode finalBlendMode)
 	{
+		this.finalBlendMode = finalBlendMode;
 		this.colorLUTResolution = colorLUTResolution;
 		this.useHDR = useHDR;
 		this.context = context;
@@ -97,6 +102,17 @@ public partial class PostFXStack
 		buffer.SetGlobalTexture(fxSourceId, from);
 		buffer.SetRenderTarget(to, RenderBufferLoadAction.DontCare, RenderBufferStoreAction.Store);
 		buffer.DrawProcedural(Matrix4x4.identity, settings.Material, (int)pass,	MeshTopology.Triangles, 3);
+	}
+
+	void DrawFinal(RenderTargetIdentifier from)
+	{
+		buffer.SetGlobalFloat(finalSrcBlendId, (float)finalBlendMode.source);
+		buffer.SetGlobalFloat(finalDstBlendId, (float)finalBlendMode.destination);
+		buffer.SetGlobalTexture(fxSourceId, from);
+		buffer.SetRenderTarget(BuiltinRenderTextureType.CameraTarget, finalBlendMode.destination == BlendMode.Zero ?
+				RenderBufferLoadAction.DontCare : RenderBufferLoadAction.Load, RenderBufferStoreAction.Store);
+		buffer.SetViewport(camera.pixelRect);
+		buffer.DrawProcedural(Matrix4x4.identity, settings.Material, (int)Pass.Final, MeshTopology.Triangles, 3);
 	}
 
 	public PostFXStack()
@@ -276,7 +292,8 @@ public partial class PostFXStack
 		buffer.SetGlobalVector(colorGradingLUTParametersId,
 			new Vector4(1f / lutWidth, 1f / lutHeight, lutHeight - 1f)
 		);
-		Draw(sourceId, BuiltinRenderTextureType.CameraTarget, Pass.Final);
+		//Draw(sourceId, BuiltinRenderTextureType.CameraTarget, Pass.Final);
+		DrawFinal(sourceId);
 		buffer.ReleaseTemporaryRT(colorGradingLUTId);
 	}
 }

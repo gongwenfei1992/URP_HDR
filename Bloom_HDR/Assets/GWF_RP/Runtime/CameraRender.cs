@@ -21,10 +21,19 @@ public partial class CameraRender
 
     PostFXStack postFXStack = new PostFXStack();
     bool useHDR;
+
+    static CameraSettings defaultCameraSettings = new CameraSettings();
     public void Render(ScriptableRenderContext context, Camera camera, bool allowHDR, bool useDynamicBatching, bool useGPUInstancing,bool useLightsPerObject, ShadowSettings shadowSettings, PostFXSettings postFXSettings, int colorLUTResolution)
     {
         this.context = context;
         this.camera = camera;
+
+        var crpCamera = camera.GetComponent<CustomRenderPipelineCamera>();
+        CameraSettings cameraSettings = crpCamera ? crpCamera.Settings : defaultCameraSettings;
+        if (cameraSettings.overridePostFX)
+        {
+            postFXSettings = cameraSettings.postFXSettings;
+        }
         PrepareBuffer();
         PrepareForSceneWindow();
         if (!Cull(shadowSettings.maxDistance))
@@ -35,7 +44,7 @@ public partial class CameraRender
         buffer.BeginSample(SampleName);
         ExecuteBuffer();
         lighting.Setup(context,cullingResults,useLightsPerObject,shadowSettings);
-        postFXStack.Setup(context, camera, postFXSettings,useHDR,colorLUTResolution);
+        postFXStack.Setup(context, camera, postFXSettings,useHDR,colorLUTResolution, cameraSettings.finalBlendMode);
         buffer.EndSample(SampleName);
         Setup();
         DrawVisibleGeometry(useDynamicBatching, useGPUInstancing,useLightsPerObject);
